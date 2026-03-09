@@ -2,60 +2,70 @@ import type { OngoingProject } from "@/types/project";
 
 export const ongoingWork: OngoingProject[] = [
   {
-    slug: "rubin-period-finding",
-    title: "Robust Period Recovery for Rubin/LSST Variable Stars",
+    slug: "iris-solar-data-pipeline",
+    title: "IRIS Solar UV Data Pipeline for Imaging and Spectroscopy",
     currentFocus:
-      "I am framing a Rubin/LSST-oriented research pipeline for periodic variables that focuses on robust period recovery under irregular survey cadence, then validating the recovered periods and classes against Gaia DR3.",
+      "I am building a clean data-and-analysis pipeline around IRIS Level 2 observations, starting from Slit-Jaw Image time series and expanding toward synchronized spectroscopy products for event catalogs, line fitting, and solar atmosphere diagnostics.",
     problemStatement:
-      "With Rubin sampling that is intrinsically non-uniform, the central problem is not just running Lomb-Scargle, but deciding when a recovered period is genuinely reliable and when it is likely an alias or false period.",
+      "IRIS data are scientifically rich but operationally easy to mishandle: FITS products are multi-extension, spectroscopy volumes grow quickly, and the project becomes messy fast unless raw files, metadata tables, and derived analysis products are separated from the start.",
     tags: [
-      "Rubin/LSST",
-      "Period Finding",
-      "Variable Stars",
-      "Gaia DR3",
-      "Time-Series Astronomy",
+      "IRIS",
+      "Solar Physics",
+      "UV Spectroscopy",
+      "Slit-Jaw Imaging",
+      "Astropy",
+      "SunPy",
+      "FITS Pipelines",
     ],
     sections: [
       {
-        title: "Astrophysical Motivation",
+        title: "Scientific Focus",
         paragraphs: [
-          "Periodic variables such as RR Lyrae, Cepheids, and eclipsing binaries matter because they anchor the distance ladder, trace Galactic structure across halo, disk, and bulge populations, and expose stellar physics through pulsation, binarity, and evolution.",
-          "At a high level the task sounds simple: take a light curve, recover the period, and classify the variable. The real difficulty starts once Rubin cadence enters the picture.",
+          "IRIS observes the chromosphere and transition region, which makes it a strong instrument for projects that sit at the boundary between astrophysics, scientific computing, and data-intensive workflow design.",
+          "The two main data families are Slit-Jaw Images for time-resolved UV imaging and spectrograph products for raster or sit-and-stare spectroscopy, so the pipeline has to support both image-first and spectroscopy-first analysis paths.",
         ],
       },
       {
-        title: "Why Rubin Makes Period Finding Hard",
+        title: "Initial Project Direction",
         bullets: [
-          "Sampling is not uniform, so the window function can generate strong aliases that compete with or even dominate the true period.",
-          "Multi-band observations exist, but they are not always simultaneous, so naïvely combining filters can distort the periodogram while splitting them lowers signal-to-noise.",
-          "Early light curves are sparse, which makes period recovery unstable until enough visits accumulate.",
-          "Different variable classes create different failure modes: RR Lyrae can alias into harmonics, eclipsing binaries often collapse to P/2, and Cepheids invite physical checks through period-luminosity consistency.",
+          "Use Level 2 calibrated IRIS products as the default starting point rather than lower-level mission data.",
+          "Start with an SJI-first workflow because it is the most practical entry point for a clean astro-computing project.",
+          "Use one channel first, with SJI 1400 as the likely starting lane for transition-region activity.",
+          "Keep the architecture ready for a later synchronized SJI plus spectroscopy workflow once the first ingest path is stable.",
         ],
       },
       {
-        title: "Research Goal",
-        paragraphs: [
-          "The working problem statement is: with Rubin-like irregular sampling, how do we recover periodic variables reliably, quantify alias risk explicitly, and produce a small high-quality catalog of periods plus classes that can be defended with external validation?",
-        ],
-      },
-      {
-        title: "Planned Scientific Pipeline",
+        title: "Data Products I Need to Manage",
         bullets: [
-          "Ingest object-level light curves with time, magnitude or flux, uncertainty, and band information.",
-          "Apply quality cuts for extreme errors, flagged photometry, and subtraction artifacts when relevant.",
-          "Run Lomb-Scargle period search while keeping multiple candidate peaks instead of trusting only the top one.",
-          "Test harmonics such as P, P/2, and 2P, then measure stability with bootstrap-style resampling or time-chunking.",
-          "Check consistency across available bands and derive a confidence score from peak contrast, folded-curve scatter, and resampling stability.",
-          "Extract phase-folded features such as robust amplitude, asymmetry, rise-time fraction, eclipse depth ratio, and percentile-based shape summaries.",
-          "Start with rule-based or tree-based classification for RR Lyrae, Cepheids, eclipsing binaries, and an other or uncertain class.",
-          "Cross-match against Gaia DR3 as a defensible validation layer for both period recovery and class-level confusion.",
+          "Raw IRIS Level 2 FITS files stored by OBS ID or observing date.",
+          "A metadata table per file with time range, product type, channel or line content, cadence, exposure, field of view, and pointing or WCS summary.",
+          "Optional derived cubes for image sequences, ideally stored in a format such as zarr or another large-array-friendly layout.",
+          "Optional spectroscopy sub-windows around physically important lines such as Si IV, C II, or Mg II instead of flattening the entire spectral volume too early.",
         ],
       },
       {
-        title: "Why This Project Matters",
+        title: "Planned Retrieval and Tooling",
+        bullets: [
+          "Use direct IRIS Level 2 portal access when OBS IDs or observing windows are already known.",
+          "Use SunPy Fido and the Virtual Solar Observatory when search and download automation are reliable in the execution environment.",
+          "Use Astropy for FITS, WCS, and time handling, and keep the workflow compatible with IRIS-specific tooling such as irispy.",
+          "Preserve the original FITS files as raw truth and build lightweight derived products separately for analysis and ML-friendly workflows.",
+        ],
+      },
+      {
+        title: "Planned Output Modes",
         paragraphs: [
-          "The scientific value is not a broker or alert-stream system. The value is a defensible object-level inference workflow that can say which periods are trustworthy, which ones are likely aliases, and how that uncertainty propagates into downstream variable-star catalogs.",
-          "That makes the project a bridge between survey cadence realism, classical time-series methods, and astrophysical validation rather than a generic machine-learning classification exercise.",
+          "The first likely use case is SJI-based event detection, where the inputs are short observational segments and the outputs are event catalogs, region-of-interest intensity tracks, and overlay figures.",
+          "A second expansion path is spectroscopy plus imaging, where the outputs become fitted line-parameter maps, Doppler proxies, and synchronized time evolution for selected regions.",
+        ],
+      },
+      {
+        title: "Immediate Starter Checklist",
+        bullets: [
+          "Choose one concrete use case first: SJI-only or synchronized SJI plus spectroscopy.",
+          "Download one short OBS ID as a sanity dataset rather than scaling immediately.",
+          "Verify that the pipeline can open the FITS files, plot a single frame, and extract one ROI intensity series cleanly.",
+          "Only after that, scale to a small multi-OBS archive with a reproducible metadata table and a consistent raw-to-derived file layout.",
         ],
       },
     ],

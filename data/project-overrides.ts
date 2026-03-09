@@ -11,6 +11,30 @@ type ProjectOverride = {
 };
 
 export const projectOverrides: Record<string, ProjectOverride> = {
+  "rubin-sampling": {
+    title: "Rubin Sampling: Gaia-to-ZTF Period Recovery Baseline",
+    summary:
+      "A public astrophysics pipeline that links Gaia DR3 truth sets to real ZTF light curves, runs baseline period recovery on RR Lyrae, and publishes evaluation artifacts, fail-case tables, and figure bundles directly in the repository.",
+    category: "Astrophysics",
+    stack: [
+      "Python",
+      "Astropy",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Gaia DR3",
+      "ZTF",
+    ],
+    featured: true,
+    narrative: {
+      challenge:
+        "Rubin-style period finding is easy to describe but hard to defend in practice once cadence irregularity, harmonics, and survey-service instability start to distort what looks like the best period candidate.",
+      build:
+        "This repository turns that problem into a clean public workflow: Gaia truth-set download, live ZTF ingest with resumable batch behavior and provider fallback, standardized parquet outputs, baseline Lomb-Scargle search, and evaluation tables that surface both recovery metrics and manual-review failure cases.",
+      outcome:
+        "The result is a portfolio-ready research repository with real data products, reproducible commands, and a first public RR Lyrae baseline batch that already shows both strong recovery performance and the first scientifically meaningful alias failures.",
+    },
+  },
   "t-crb-project": {
     title: "T CrB Photometry and Raw-Image Pipeline",
     summary:
