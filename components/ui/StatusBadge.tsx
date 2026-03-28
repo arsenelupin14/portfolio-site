@@ -4,10 +4,10 @@ export function StatusBadge({ status }: { status: "Completed" | "Ongoing" }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em]",
+        "inline-flex items-center border px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.18em]",
         status === "Completed"
-          ? "border-emerald-400/20 bg-emerald-400/10 text-emerald-200"
-          : "border-amber-300/20 bg-amber-300/10 text-amber-100"
+          ? "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)]"
+          : "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]"
       )}
     >
       {status}

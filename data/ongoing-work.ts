@@ -5,7 +5,7 @@ export const ongoingWork: OngoingProject[] = [
     slug: "astrolyte",
     title: "Astrolyte",
     currentFocus:
-      "I am building Astrolyte as a public data platform for structured observational datasets, with explicit stages for ingest, index, process, validate, and serve.",
+      "Building Astrolyte as a public-facing data platform where ingest, indexing, processing, validation, and dataset surfacing are treated as explicit stages rather than hidden implementation detail.",
     links: [
       {
         label: "Live site",
@@ -17,12 +17,12 @@ export const ongoingWork: OngoingProject[] = [
       },
     ],
     problemStatement:
-      "A lot of technical work stops at analysis output. Astrolyte exists to keep raw records, metadata, processed artifacts, and validation surfaces legible enough that the workflow can grow into a real platform instead of remaining a collection of isolated repositories.",
+      "A lot of technical work stops at final analysis output. Astrolyte exists to keep source records, metadata, processed artifacts, and validation surfaces legible enough that the workflow can grow into a real platform instead of remaining a collection of isolated repositories.",
     tags: [
       "Next.js",
       "TypeScript",
       "Data Platform",
-      "Data Engineering",
+      "Data Workflows",
       "Workflow Systems",
       "Observational Data",
     ],
@@ -30,12 +30,12 @@ export const ongoingWork: OngoingProject[] = [
       {
         title: "Current Build",
         paragraphs: [
-          "The current Astrolyte surface is live and organized around three existing workflow lineages: IRIS, Rubin Sampling, and the T CrB project.",
-          "Those lineages act as the first source lanes, not the end state. The direction is to use Astrolyte as a durable surface for dataset views, workflow stages, and validation-aware outputs as more systems are added.",
+          "The current surface is live and organized around three existing workflow lineages: IRIS, Rubin Sampling, and the T CrB project.",
+          "Those lineages are the first source lanes, not the final shape. The direction is to make Astrolyte a durable surface for dataset views, workflow stages, and validation-aware outputs as more systems are added.",
         ],
       },
       {
-        title: "System Design",
+        title: "Architecture",
         bullets: [
           "Keep ingest, metadata indexing, processed outputs, and validation visible as separate stages.",
           "Treat the site as the public surface of real workflow systems, not as a generic project gallery.",
@@ -43,7 +43,7 @@ export const ongoingWork: OngoingProject[] = [
         ],
       },
       {
-        title: "What Comes Next",
+        title: "Next",
         bullets: [
           "Expand beyond the initial three source lanes.",
           "Strengthen provenance views, dataset inspection pages, and output surfacing.",

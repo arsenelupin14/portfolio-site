@@ -8,45 +8,41 @@ export function GitHubHighlights({ items }: { items: GitHubHighlight[] }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <SectionTitle
-        eyebrow="Supporting Activity"
-        title="GitHub Highlights"
-        subtitle="A compact view of recent repository activity. Useful as supporting evidence of consistency, but intentionally secondary to the curated project set."
+        eyebrow="Supporting Signal"
+        title="GitHub Activity"
+        subtitle="Recent public repository movement, kept secondary to the curated case-study set but useful as a consistency check."
       />
-      <div className="grid gap-4 lg:grid-cols-2">
+
+      <div className="border-t border-[var(--line)]">
         {items.map((repo) => (
           <a
             key={repo.name + repo.updatedAt}
             href={repo.htmlUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="panel-soft group rounded-[24px] p-5 transition duration-300 hover:-translate-y-1 hover:border-sky-200/20"
+            className="group grid gap-4 border-b border-[var(--line)] py-5 transition-colors hover:text-[var(--accent)] lg:grid-cols-[minmax(0,1fr)_220px]"
           >
-            <div className="flex h-full flex-col justify-between gap-4">
-              <div>
-                <div className="mb-3 flex items-center justify-between gap-3">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-sky-100/65">
-                    Repository
-                  </p>
-                  <span className="text-xs text-slate-500">
-                    Updated {formatDate(repo.updatedAt)}
-                  </span>
-                </div>
-                <p className="text-lg font-medium text-white group-hover:text-sky-100">
-                  {repo.name}
+            <div>
+              <p className="text-lg font-medium text-[var(--foreground)]">
+                {repo.name}
+              </p>
+              {repo.description && (
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--muted)]">
+                  {repo.description}
                 </p>
-              </div>
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                {repo.language && <span>{repo.language}</span>}
-                {repo.stars > 0 && <span>{repo.stars} stars</span>}
-                {repo.topics.slice(0, 3).map((topic) => (
-                  <span
-                    key={topic}
-                    className="rounded-full border border-white/8 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-slate-400"
-                  >
-                    {topic}
-                  </span>
-                ))}
-              </div>
+              )}
+            </div>
+
+            <div className="text-sm leading-7 text-[var(--muted)] lg:text-right">
+              <p>Updated {formatDate(repo.updatedAt)}</p>
+              <p>
+                {[repo.language, repo.stars > 0 ? `${repo.stars} stars` : null]
+                  .filter(Boolean)
+                  .join(" / ")}
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-[0.18em]">
+                {repo.topics.slice(0, 3).join(" / ")}
+              </p>
             </div>
           </a>
         ))}

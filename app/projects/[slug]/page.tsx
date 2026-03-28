@@ -42,12 +42,43 @@ export default async function ProjectDetailPage({ params }: Props) {
     project.updatedAt ? `Updated ${formatDate(project.updatedAt)}` : null,
   ].filter(Boolean);
 
+  const sections = [
+    {
+      label: "Overview",
+      content: project.summary,
+    },
+    {
+      label: "Problem",
+      content: project.narrative.problem,
+    },
+    {
+      label: "Workflow / System Design",
+      content: project.narrative.workflow,
+    },
+    {
+      label: "Outputs / Artifacts",
+      content: project.narrative.outputs,
+    },
+    {
+      label: "Validation",
+      content: project.narrative.validation,
+    },
+    ...(project.repositorySummary
+      ? [
+          {
+            label: "Repository Snapshot",
+            content: project.repositorySummary,
+          },
+        ]
+      : []),
+  ];
+
   return (
-    <div className="px-6 pb-24 pt-28 sm:pt-32">
+    <div className="px-6 pb-24 pt-20 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         <Link
           href="/projects"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-white"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
         >
           <span className="font-mono text-xs uppercase tracking-[0.24em]">
             Back
@@ -55,120 +86,90 @@ export default async function ProjectDetailPage({ params }: Props) {
           <span>Projects</span>
         </Link>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_320px]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.45fr)_280px]">
           <article>
             <div className="mb-5 flex flex-wrap items-center gap-3">
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-sky-100/70">
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--muted)]">
                 {project.category}
               </span>
               <StatusBadge status={project.status} />
             </div>
 
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">
               {project.title}
             </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-              {project.summary}
-            </p>
 
             {meta.length > 0 && (
-              <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-                {meta.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/8 px-3 py-1"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <p className="mt-6 text-sm leading-7 text-[var(--muted)]">
+                {meta.join(" / ")}
+              </p>
             )}
 
-            <div className="mt-10 space-y-4">
-              <section className="panel rounded-[28px] p-7">
-                <p className="eyebrow mb-4">Challenge</p>
-                <p className="text-sm leading-7 text-slate-300">
-                  {project.narrative.challenge}
-                </p>
-              </section>
-              <section className="panel rounded-[28px] p-7">
-                <p className="eyebrow mb-4">Implementation</p>
-                <p className="text-sm leading-7 text-slate-300">
-                  {project.narrative.build}
-                </p>
-              </section>
-              <section className="panel rounded-[28px] p-7">
-                <p className="eyebrow mb-4">Result</p>
-                <p className="text-sm leading-7 text-slate-300">
-                  {project.narrative.outcome}
-                </p>
-              </section>
+            <div className="mt-12 border-t border-[var(--line)]">
+              {sections.map((section) => (
+                <section
+                  key={section.label}
+                  className="grid gap-4 border-b border-[var(--line)] py-8 lg:grid-cols-[190px_minmax(0,1fr)]"
+                >
+                  <p className="eyebrow">{section.label}</p>
+                  <div className="max-w-3xl">
+                    <p className="text-base leading-8 text-[var(--muted)]">
+                      {section.content}
+                    </p>
+                  </div>
+                </section>
+              ))}
             </div>
-
-            {project.repositorySummary && (
-              <section className="panel-soft mt-4 rounded-[28px] p-7">
-                <p className="eyebrow mb-4">Repository Snapshot</p>
-                <p className="text-sm leading-7 text-slate-300">
-                  {project.repositorySummary}
-                </p>
-              </section>
-            )}
           </article>
 
-          <aside className="space-y-4">
-            <div className="panel rounded-[28px] p-6">
-              <p className="eyebrow mb-5">Links</p>
-              <div className="flex flex-col gap-3">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-11 items-center justify-center rounded-full bg-sky-200 px-5 text-sm font-medium text-slate-950 transition hover:bg-sky-100"
-                >
-                  View on GitHub
-                </a>
-                {project.demoUrl && (
+          <aside className="self-start border-t border-[var(--line)] pt-6 lg:sticky lg:top-24 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <div className="space-y-6">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]">
+                  Links
+                </p>
+                <div className="mt-3 flex flex-col gap-3 text-sm">
                   <a
-                    href={project.demoUrl}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.03] px-5 text-sm font-medium text-white transition hover:border-sky-200/20 hover:bg-white/[0.06]"
+                    className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
                   >
-                    Live Demo
+                    View on GitHub
                   </a>
-                )}
-              </div>
-            </div>
-
-            <div className="panel-soft rounded-[28px] p-6">
-              <p className="eyebrow mb-5">Stack</p>
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-white/8 px-3 py-1 text-xs text-slate-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {project.topics.length > 0 && (
-              <div className="panel-soft rounded-[28px] p-6">
-                <p className="eyebrow mb-5">Topics</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.topics.map((topic) => (
-                    <span
-                      key={topic}
-                      className="rounded-full border border-white/8 px-3 py-1 text-xs uppercase tracking-[0.16em] text-slate-300"
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
                     >
-                      {topic}
-                    </span>
-                  ))}
+                      Live demo
+                    </a>
+                  )}
                 </div>
               </div>
-            )}
+
+              <div className="border-t border-[var(--line)] pt-6">
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]">
+                  Stack
+                </p>
+                <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+                  {project.stack.join(" / ")}
+                </p>
+              </div>
+
+              {project.topics.length > 0 && (
+                <div className="border-t border-[var(--line)] pt-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--muted)]">
+                    Topics
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+                    {project.topics.join(" / ")}
+                  </p>
+                </div>
+              )}
+            </div>
           </aside>
         </div>
       </div>

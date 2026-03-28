@@ -4,19 +4,18 @@ export function Footer() {
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&to=${siteIdentity.email}`;
 
   return (
-    <footer className="border-t border-white/8 bg-[#040812]/90">
+    <footer className="border-t border-[var(--line)] bg-background">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-[1fr_auto]">
           <div className="space-y-4">
-            <p className="text-lg font-semibold tracking-tight text-white">
+            <p className="text-lg font-semibold tracking-tight text-[var(--foreground)]">
               {siteIdentity.name}
             </p>
-            <p className="max-w-lg text-sm leading-7 text-slate-400">
-              Structured data workflows, reproducible systems, and curated
-              technical work built around real datasets and visible engineering
-              decisions.
+            <p className="max-w-lg text-sm leading-7 text-[var(--muted)]">
+              Data workflows, reproducible systems, and technical case studies
+              built around messy datasets and visible engineering decisions.
             </p>
-            <p className="text-sm leading-7 text-slate-500">
+            <p className="text-sm leading-7 text-[var(--muted)]">
               {siteIdentity.availability}
             </p>
           </div>
@@ -27,7 +26,7 @@ export function Footer() {
                 href={gmailComposeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 transition-colors hover:text-white"
+                className="text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
                 Email
               </a>
@@ -35,7 +34,7 @@ export function Footer() {
                 href={siteIdentity.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 transition-colors hover:text-white"
+                className="text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
                 GitHub
               </a>
@@ -43,7 +42,7 @@ export function Footer() {
                 href={siteIdentity.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 transition-colors hover:text-white"
+                className="text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
                 LinkedIn
               </a>

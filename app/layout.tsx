@@ -38,12 +38,11 @@ const adwaitaMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Ikbar Faiz | Data Engineering, Workflow Systems, and Reproducible Software",
+    default: "Ikbar Faiz | Data Workflows and Reproducible Systems",
     template: "%s | Ikbar Faiz",
   },
   description:
-    "Portfolio of Ikbar Faiz, focused on reproducible data workflows, metadata-aware processing, validation-heavy systems, and workflow-oriented software built on real datasets.",
+    "Editorial portfolio of Ikbar Faiz, focused on data workflows, validation-heavy systems, and recruiter-readable technical case studies.",
   keywords: [
     "Ikbar Faiz",
     "data engineering",
@@ -54,8 +53,7 @@ export const metadata: Metadata = {
     "portfolio",
   ],
   openGraph: {
-    title:
-      "Ikbar Faiz | Data Engineering, Workflow Systems, and Reproducible Software",
+    title: "Ikbar Faiz | Data Workflows and Reproducible Systems",
     description:
       "Curated workflow systems, data pipelines, and reproducible software built on real datasets.",
     type: "website",

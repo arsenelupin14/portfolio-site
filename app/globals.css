@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
-  --background: #050816;
-  --foreground: #f5f7ff;
-  --muted: #94a0bf;
-  --line: rgba(150, 173, 255, 0.16);
-  --line-strong: rgba(166, 190, 255, 0.28);
+  color-scheme: light;
+  --background: #f4f0e6;
+  --foreground: #17191d;
+  --muted: #626873;
+  --line: #d6d0c5;
+  --line-strong: #b9b2a6;
+  --surface: #fbf8f1;
+  --accent: #0f5c66;
+  --accent-soft: #dcecee;
 }
 
 @theme inline {
@@ -26,38 +29,9 @@ html {
 }
 
 body {
-  position: relative;
   min-height: 100vh;
-  isolation: isolate;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(97, 149, 255, 0.18), transparent 26%),
-    radial-gradient(circle at 85% 12%, rgba(123, 229, 255, 0.15), transparent 20%),
-    linear-gradient(180deg, #07101f 0%, #040811 55%, #03050d 100%);
+  background: var(--background);
   color: var(--foreground);
-}
-
-body::before,
-body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-
-body::before {
-  background-image:
-    linear-gradient(rgba(128, 149, 201, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(128, 149, 201, 0.08) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent);
-}
-
-body::after {
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-  background-size: 160px 160px;
-  opacity: 0.18;
 }
 
 a {
@@ -66,37 +40,22 @@ a {
 }
 
 ::selection {
-  background: rgba(143, 220, 255, 0.22);
+  background: var(--accent-soft);
   color: var(--foreground);
 }
 
-.panel {
-  background:
-    linear-gradient(180deg, rgba(13, 19, 38, 0.9) 0%, rgba(7, 10, 22, 0.96) 100%);
-  border: 1px solid var(--line);
-  box-shadow: 0 24px 80px rgba(1, 4, 18, 0.44);
-  backdrop-filter: blur(18px);
-}
-
-.panel-soft {
-  background:
-    linear-gradient(180deg, rgba(12, 18, 34, 0.78) 0%, rgba(7, 10, 22, 0.88) 100%);
-  border: 1px solid rgba(154, 180, 255, 0.12);
-  backdrop-filter: blur(14px);
-}
-
 .eyebrow {
-  color: rgba(164, 219, 255, 0.8);
+  color: var(--muted);
   font-family: var(--font-adwaita-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
 }
 
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -106,12 +65,17 @@ a {
 
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(24px);
 }
 
 .scroll-reveal.is-visible {
-  animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: reveal-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.scroll-reveal.delay-1 { animation-delay: 0.1s; }
-.scroll-reveal.delay-2 { animation-delay: 0.2s; }
+.scroll-reveal.delay-1 {
+  animation-delay: 0.08s;
+}
+
+.scroll-reveal.delay-2 {
+  animation-delay: 0.16s;
+}

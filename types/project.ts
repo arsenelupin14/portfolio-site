@@ -1,13 +1,14 @@
 export type ProjectCategory =
-  | "Data Engineering"
+  | "Data Workflows"
   | "Workflow Systems"
   | "Research Software"
   | "Data Platform";
 
 export type ProjectNarrative = {
-  challenge: string;
-  build: string;
-  outcome: string;
+  problem: string;
+  workflow: string;
+  outputs: string;
+  validation: string;
 };
 
 export type CompletedProject = {
@@ -81,6 +82,13 @@ export type SiteIdentity = {
   headline: string;
   heroSummary: string;
   introParagraphs: string[];
+  workingModelParagraphs: string[];
+  proofPoints: {
+    value: string;
+    label: string;
+    detail: string;
+  }[];
+  workflowStages: string[];
   availability: string;
   email: string;
   github: string;

@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ProjectSlice } from "@/components/ui/ProjectSlice";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import type { CompletedProject } from "@/types/project";
 
@@ -9,16 +9,21 @@ export function SelectedProjects({
 }) {
   if (projects.length === 0) return null;
 
+  const [featuredProject, ...otherProjects] = projects;
+
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
       <SectionTitle
         eyebrow="Validated Work"
         title="Selected Projects"
-        subtitle="Completed systems and pipelines with reusable artifacts, validation surfaces, and local copy that explains the engineering value instead of mirroring raw repository metadata."
+        subtitle="Completed systems presented as case-study slices: workflow design, outputs, validation, and repository context before raw tooling detail."
       />
-      <div className="grid gap-5 lg:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+
+      <ProjectSlice project={featuredProject} featured />
+
+      <div>
+        {otherProjects.map((project) => (
+          <ProjectSlice key={project.slug} project={project} />
         ))}
       </div>
     </section>

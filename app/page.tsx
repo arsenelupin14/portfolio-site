@@ -8,24 +8,12 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getHomePageData } from "@/lib/projects";
 
 export default async function Home() {
-  const {
-    completedProjects,
-    featuredProjects,
-    ongoingProjects,
-    focusAreas,
-    highlights,
-  } = await getHomePageData();
+  const { completedProjects, featuredProjects, ongoingProjects, focusAreas, highlights } =
+    await getHomePageData();
 
   return (
     <>
-      <Hero
-        completedCount={completedProjects.length}
-        ongoingCount={ongoingProjects.length}
-        focusCount={focusAreas.length}
-      />
-      <ScrollReveal>
-        <Intro />
-      </ScrollReveal>
+      <Hero completedCount={completedProjects.length} />
       <ScrollReveal>
         <SelectedProjects projects={featuredProjects} />
       </ScrollReveal>
@@ -34,6 +22,9 @@ export default async function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <TechnicalFocus areas={focusAreas} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Intro />
       </ScrollReveal>
       <ScrollReveal>
         <GitHubHighlights items={highlights} />

@@ -7,18 +7,19 @@ export function TechnicalFocus({ areas }: { areas: FocusArea[] }) {
       <SectionTitle
         eyebrow="Core Areas"
         title="Technical Focus"
-        subtitle="The portfolio is grouped around transferable engineering strengths first, with scientific datasets acting as the operating context rather than the main identity."
+        subtitle="The grouping is engineering-first: workflow handling, structured execution, and reproducibility come before the domain context."
       />
-      <div className="grid gap-4 lg:grid-cols-3">
+
+      <div className="grid gap-8 border-t border-[var(--line)] pt-8 lg:grid-cols-3">
         {areas.map((area, index) => (
-          <div key={area.title} className="panel rounded-[28px] p-6">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-sky-100/70">
+          <div key={area.title}>
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--muted)]">
               {String(index + 1).padStart(2, "0")}
             </p>
-            <h3 className="mb-3 text-xl font-semibold tracking-tight text-white">
+            <h3 className="mb-3 text-xl font-semibold tracking-tight text-[var(--foreground)]">
               {area.title}
             </h3>
-            <p className="text-sm leading-7 text-slate-300">
+            <p className="text-sm leading-7 text-[var(--muted)]">
               {area.description}
             </p>
           </div>

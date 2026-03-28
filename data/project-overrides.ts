@@ -15,8 +15,8 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   "rubin-sampling": {
     title: "Rubin Sampling: Gaia-to-ZTF Period Recovery Baseline",
     summary:
-      "A reproducible Python pipeline for ingesting public survey light curves, standardizing them into parquet-based artifacts, and evaluating period recovery against Gaia DR3 truth data. The workflow keeps ingest behavior, failure modes, and baseline results visible instead of burying them behind final figures.",
-    category: "Data Engineering",
+      "A reproducible Python pipeline for ingesting public survey light curves, standardizing them into parquet artifacts, and evaluating period recovery against Gaia DR3 truth data. The system keeps ingest behavior, failure modes, and baseline results visible instead of burying them behind final figures.",
+    category: "Data Workflows",
     stack: [
       "Python",
       "Astropy",
@@ -30,12 +30,14 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     repositorySnapshot:
       "Public baseline pipeline for live ingest, standardized time-series outputs, and evaluation under Rubin-like cadence constraints.",
     narrative: {
-      challenge:
-        "Public time-series workflows are easy to prototype and hard to trust once live providers, irregular cadence, and aliasing start to break assumptions. The core problem here was building a pipeline that could ingest unstable external data, standardize it cleanly, and expose evaluation results in a defensible way.",
-      build:
-        "The repository turns that problem into explicit stages: Gaia truth-set download, live ZTF ingest with provider fallback and resumable execution, schema-standardized parquet outputs, baseline Lomb-Scargle search, and evaluation tables that surface recovery, ingest status, and known alias failures.",
-      outcome:
-        "The result is a rerunnable baseline workflow with tracked artifacts at each stage: truth tables, ingest summaries, standardized light-curve batches, period results, evaluation tables, and figure bundles. It reads like a workflow system rather than a one-off notebook experiment.",
+      problem:
+        "Baseline period-recovery work depends on public survey data with unstable availability, irregular cadence, and alias-prone signals. The workflow problem was to ingest those inputs reliably, standardize them, and evaluate recovery behavior in a way that stays inspectable.",
+      workflow:
+        "The pipeline stages Gaia truth-set download, live ZTF ingest with provider fallback and resumable execution, parquet standardization, Lomb-Scargle search, and evaluation tables that record ingest status and recovery results.",
+      outputs:
+        "Artifacts include truth tables, standardized light-curve batches, period estimates, fail-case tables, and figure bundles. Each step writes intermediate outputs so reruns and debugging do not depend on notebook state.",
+      validation:
+        "The workflow keeps failure modes visible instead of hiding them behind aggregate plots. Alias behavior, missing-source conditions, and recovery breakdowns stay exposed in the exported evaluation tables.",
     },
   },
   "t-crb-project": {
@@ -55,12 +57,14 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     repositorySnapshot:
       "Reproducible photometry and raw-image workflow with standardized outputs, overlap validation, and archive-aware provenance.",
     narrative: {
-      challenge:
-        "Historical and modern observational data tends to fragment across CSVs, notebooks, figures, and archive lookups, which makes reruns and validation hard to trust. The challenge was to keep cleaned products, overlap checks, and raw-image context connected inside a single workflow.",
-      build:
-        "I split the project into explicit lanes for modern V analysis, cross-cycle Vis context, and raw-image support. The pipeline produces cleaned parquet outputs, smoothing and binned products, ASAS-SN overlap validation, notebook wrappers, manifests, and archive-aware image staging across PS1, Legacy Survey, and DASCH.",
-      outcome:
-        "The result is a reusable data workflow with traceable outputs instead of scattered analysis files: standardized tables, exported metrics, figures, and provenance notes all live in one structure. The repository can be rerun, inspected, and extended without losing the context behind each artifact.",
+      problem:
+        "Photometry tables and raw-image support data were spread across heterogeneous files, notebooks, and archive lookups, which made reruns and cross-source checks hard to trust. The task was to keep cleaned products, provenance, and validation inside one workflow instead of letting them drift apart.",
+      workflow:
+        "I split the system into explicit lanes for modern V ingest, context-building, and raw-image support across PS1, Legacy Survey, and DASCH. The workflow exports 174,872 modern V observations, builds 1-day and 7-day bins plus rolling medians, and writes manifests for staged raw-image assets.",
+      outputs:
+        "The repository produces cleaned tables, binned products, figures, manifests, and provenance notes rather than a loose set of analysis files. Each stage leaves behind artifacts that can be inspected or reused independently.",
+      validation:
+        "Cross-source comparison against ASAS-SN stays inside the workflow, with 71 overlap bins, a median delta of -0.019 mag, and a Spearman correlation of 0.883 recorded as explicit checks rather than informal side analysis.",
     },
   },
   "ruwe-radial-ks-clustering": {
@@ -80,12 +84,14 @@ export const projectOverrides: Record<string, ProjectOverride> = {
     repositorySnapshot:
       "CLI-backed clustering and data-quality workflow for Gaia-derived tables, with preserved notebook provenance and multi-cluster outputs.",
     narrative: {
-      challenge:
-        "Exploratory clustering analysis often stays trapped in notebooks, making reruns, cross-dataset comparison, and public reuse harder than they should be. The workflow problem was to make intermediate assumptions and quality checks visible without losing flexibility.",
-      build:
-        "The repository reorganizes the original analysis into explicit stages: table standardization, Monte Carlo plus KMeans voting for membership inference, CMD generation, RUWE-based quality views, and radial KS testing. A small CLI handles the main paths while archived notebooks preserve provenance.",
-      outcome:
-        "The result is a cleaner research software workflow that can be rerun across multiple clusters with shared commands, generated figures, and summarized outputs. It preserves transparency while reducing the fragility of manual notebook execution.",
+      problem:
+        "Open-cluster analysis often lives inside notebooks, which makes reruns, parameter tracing, and cross-dataset comparison fragile. The workflow problem was to turn exploratory clustering and quality inspection into a reusable execution path.",
+      workflow:
+        "The repository reorganizes the work into table standardization, Monte Carlo plus KMeans voting for membership inference, CMD generation, RUWE quality views, and radial KS testing. A small CLI handles repeated runs while archived notebooks preserve provenance.",
+      outputs:
+        "The system produces comparable outputs across clusters: membership tables, diagnostic plots, quality views, and summary artifacts that can be regenerated with shared commands.",
+      validation:
+        "Quality and comparison steps are part of the workflow itself rather than post hoc checks, so intermediate assumptions, diagnostic surfaces, and cross-cluster differences stay visible during reruns.",
     },
   },
 };

@@ -2,14 +2,48 @@ import type { FocusArea, SiteIdentity } from "@/types/project";
 
 export const siteIdentity: SiteIdentity = {
   name: "Ikbar Faiz",
-  role: "Data workflows and reproducible systems",
+  role: "Data workflows / reproducible software",
   headline: "Data Workflows",
   heroSummary:
-    "My work is Python-centered and reproducibility-first: ingestion, metadata handling, validation, and traceable technical artifacts. Most examples here use scientific datasets, but the core value is workflow design, data engineering discipline, and technical ownership.",
+    "I build Python-centered workflows that take messy records through ingest, metadata shaping, validation, and structured outputs. The datasets here are scientific, but the signal is engineering discipline, reproducibility, and traceable execution.",
   introParagraphs: [
-    "I build data workflows and technical systems that start with messy public datasets and end with structured, inspectable outputs.",
-    "Across projects, the recurring pattern is explicit ingestion, metadata-aware processing, validation, and reproducible artifacts that can be rerun instead of rebuilt by hand.",
-    "The examples here use scientific data because it forces discipline around formats, provenance, and uncertainty, but the transferable value is engineering rigor, workflow design, and technical ownership.",
+    "I build systems that take raw public data through explicit ingest, metadata handling, validation, and analysis-ready outputs.",
+    "Across projects, the recurring pattern is staged processing, rerunnable artifacts, and enough provenance to inspect what changed between raw inputs and derived results.",
+    "The operating domain here is scientific data, but the transferable value is workflow design, validation discipline, and technical ownership over messy datasets.",
+  ],
+  workingModelParagraphs: [
+    "Completed work is separated from active systems so finished case studies stay legible and ongoing builds stay honest.",
+    "Repositories only move into the curated project set when the workflow, artifacts, and validation story are clear enough to stand on their own.",
+    "Active systems stay in a lighter log format so platform direction, tooling, and unfinished work can remain visible without pretending to be complete.",
+  ],
+  proofPoints: [
+    {
+      value: "174,872",
+      label: "records processed",
+      detail: "Modern V observations exported, cleaned, and structured inside a repeatable workflow.",
+    },
+    {
+      value: "71",
+      label: "validation bins",
+      detail: "Cross-source overlap checks kept visible as explicit workflow outputs instead of side analysis.",
+    },
+    {
+      value: "03",
+      label: "completed systems",
+      detail: "Curated case studies with inspectable artifacts, reruns, and technical writeups.",
+    },
+    {
+      value: "Python",
+      label: "core build language",
+      detail: "Data workflows, validation-heavy execution, and backend-leaning technical systems.",
+    },
+  ],
+  workflowStages: [
+    "Raw sources",
+    "Metadata / index",
+    "Processing",
+    "Validation",
+    "Outputs",
   ],
   availability:
     "Based in Indonesia. Focused on data engineering and workflow-oriented backend roles.",
@@ -21,24 +55,24 @@ export const siteIdentity: SiteIdentity = {
 
 export const technicalFocusAreas: FocusArea[] = [
   {
-    title: "Data Engineering",
+    title: "Data Workflows",
     description:
-      "Pipelines for ingestion, schema shaping, metadata handling, validation, and structured outputs built from messy public datasets.",
+      "Ingest, standardize, validate, and package messy public data into structured artifacts that can be rerun and inspected.",
   },
   {
     title: "Workflow Systems",
     description:
-      "Raw-to-derived pipeline design, provenance-aware outputs, reproducible reruns, and staged processing that stays inspectable as projects grow.",
+      "Design multi-stage paths from raw records to derived outputs, with explicit checkpoints, provenance, and visible validation surfaces.",
   },
   {
     title: "Research Software",
     description:
-      "Domain-specific tools and analysis systems built with engineering discipline, where the scientific context supports the workflow instead of replacing it.",
+      "Build domain-specific tools where the scientific context is the operating domain and engineering discipline stays in the foreground.",
   },
 ];
 
 export const currentDirection: string[] = [
-  "Python pipelines for ingesting, cleaning, and validating messy public data",
-  "Metadata-aware workflows with traceable raw-to-derived outputs",
-  "Small data-intensive systems built for reruns, structured artifacts, and transparency",
+  "Python pipelines for ingest, schema shaping, and validation on messy public data",
+  "Workflow-heavy systems with visible provenance, checkpoints, and rerunnable outputs",
+  "Data-intensive backend directions that reward structured execution over demo-first polish",
 ];
