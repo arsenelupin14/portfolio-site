@@ -56,7 +56,7 @@ export function ProjectSlice({
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <Link
               href={`/projects/${project.slug}`}
-              className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
+              className="button-link button-link--accent"
             >
               Open case study
             </Link>
@@ -64,7 +64,7 @@ export function ProjectSlice({
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+              className="button-link"
             >
               View repository
             </a>
@@ -73,7 +73,7 @@ export function ProjectSlice({
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+                className="button-link"
               >
                 Live demo
               </a>

@@ -133,7 +133,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
+                    className="button-link button-link--accent"
                   >
                     View on GitHub
                   </a>
@@ -142,7 +142,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
+                      className="button-link"
                     >
                       Live demo
                     </a>

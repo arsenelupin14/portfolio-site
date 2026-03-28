@@ -52,6 +52,34 @@ a {
   text-transform: uppercase;
 }
 
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--foreground);
+  padding: 0 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.button-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.button-link--accent {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 @keyframes reveal-up {
   from {
     opacity: 0;

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteIdentity } from "@/data/site";
 
@@ -6,6 +7,13 @@ export function Navbar() {
     <header className="sticky inset-x-0 top-0 z-50 border-b border-[var(--line)] bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/avatar.jpg"
+            alt={siteIdentity.name}
+            width={36}
+            height={36}
+            className="rounded-full border border-[var(--line)]"
+          />
           <span className="flex flex-col">
             <span className="text-sm font-medium tracking-tight text-[var(--foreground)]">
               {siteIdentity.name}
@@ -40,6 +48,12 @@ export function Navbar() {
             className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
           >
             Projects
+          </Link>
+          <Link
+            href="/#contact"
+            className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+          >
+            Contact
           </Link>
         </nav>
 

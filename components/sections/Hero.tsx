@@ -32,7 +32,7 @@ export function Hero({ completedCount }: HeroProps) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/projects"
-                className="inline-flex h-11 items-center border border-[var(--foreground)] bg-[var(--foreground)] px-5 text-sm font-medium text-[var(--background)] transition hover:bg-[var(--accent)] hover:border-[var(--accent)]"
+                className="button-link button-link--accent"
               >
                 View Case Studies
               </Link>
@@ -40,9 +40,9 @@ export function Hero({ completedCount }: HeroProps) {
                 href={siteIdentity.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center border border-[var(--line-strong)] px-5 text-sm font-medium text-[var(--foreground)] transition hover:border-[var(--foreground)]"
+                className="button-link"
               >
-                GitHub
+                Open GitHub
               </a>
             </div>
 

@@ -14,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/projects"
-          className="mt-8 inline-flex h-11 items-center border border-[var(--foreground)] bg-[var(--foreground)] px-6 text-sm font-medium text-[var(--background)] transition hover:border-[var(--accent)] hover:bg-[var(--accent)]"
+          className="button-link button-link--accent mt-8"
         >
           Back to Projects
         </Link>

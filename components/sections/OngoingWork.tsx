@@ -40,7 +40,7 @@ export function OngoingWork({ items }: { items: OngoingProject[] }) {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-medium text-[var(--foreground)] transition-colors hover:text-[var(--accent)]"
+                        className="button-link"
                       >
                         {link.label}
                       </a>

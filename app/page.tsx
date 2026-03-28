@@ -1,3 +1,4 @@
+import { ContactSection } from "@/components/sections/ContactSection";
 import { GitHubHighlights } from "@/components/sections/GitHubHighlights";
 import { Hero } from "@/components/sections/Hero";
 import { Intro } from "@/components/sections/Intro";
@@ -28,6 +29,9 @@ export default async function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <GitHubHighlights items={highlights} />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ContactSection />
       </ScrollReveal>
     </>
   );

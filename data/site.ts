@@ -47,7 +47,9 @@ export const siteIdentity: SiteIdentity = {
   ],
   availability:
     "Based in Indonesia. Focused on data engineering and workflow-oriented backend roles.",
+  phone: "+6282134099169",
   email: "ikbarfaiz14@gmail.com",
+  resumeUrl: "/ikbar-faiz-cv.pdf",
   github: "https://github.com/newtonraphson14",
   githubUsername: "newtonraphson14",
   linkedin: "https://linkedin.com/in/ikbarfaiz",

@@ -90,7 +90,9 @@ export type SiteIdentity = {
   }[];
   workflowStages: string[];
   availability: string;
+  phone: string;
   email: string;
+  resumeUrl: string;
   github: string;
   githubUsername: string;
   linkedin: string;
