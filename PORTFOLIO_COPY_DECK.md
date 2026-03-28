@@ -87,7 +87,7 @@ Recruiter-minded copy strategy and rewrite guidance for positioning the portfoli
 
 ### 5 hero headlines
 
-1. `I build data workflows that turn messy records into structured outputs.`
+1. `Data Workflows`
 2. `Reproducible data workflows for messy, real-world datasets.`
 3. `From raw records to validated outputs.`
 4. `Data workflows built for reruns, traceability, and clear technical outputs.`
@@ -115,7 +115,7 @@ Recruiter-minded copy strategy and rewrite guidance for positioning the portfoli
 
 ### Chosen final wording used on the site
 
-- Headline: `I build data workflows that turn messy records into structured outputs.`
+- Headline: `Data Workflows`
 - Subheadline: `My work is Python-centered and reproducibility-first: ingestion, metadata handling, validation, and traceable technical artifacts. Most examples here use scientific datasets, but the core value is workflow design, data engineering discipline, and technical ownership.`
 - Current direction support line: `Based in Indonesia. Focused on data engineering and workflow-oriented backend roles.`
 
@@ -321,7 +321,7 @@ This is the final recommended wording set to paste directly into the site:
 
 - Browser title: `Ikbar Faiz | Data Engineering, Workflow Systems, and Reproducible Software`
 - Hero eyebrow: `Portfolio / Data Workflow Systems`
-- Hero headline: `I build data workflows that turn messy records into structured outputs.`
+- Hero headline: `Data Workflows`
 - Hero subheadline: `My work is Python-centered and reproducibility-first: ingestion, metadata handling, validation, and traceable technical artifacts. Most examples here use scientific datasets, but the core value is workflow design, data engineering discipline, and technical ownership.`
 - Current direction line: `Based in Indonesia. Focused on data engineering and workflow-oriented backend roles.`
 - Intro heading: `What I Build`

@@ -3,7 +3,7 @@ import type { FocusArea, SiteIdentity } from "@/types/project";
 export const siteIdentity: SiteIdentity = {
   name: "Ikbar Faiz",
   role: "Data workflows and reproducible systems",
-  headline: "I build data workflows that turn messy records into structured outputs.",
+  headline: "Data Workflows",
   heroSummary:
     "My work is Python-centered and reproducibility-first: ingestion, metadata handling, validation, and traceable technical artifacts. Most examples here use scientific datasets, but the core value is workflow design, data engineering discipline, and technical ownership.",
   introParagraphs: [
