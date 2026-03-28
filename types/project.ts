@@ -34,6 +34,10 @@ export type OngoingProject = {
   slug: string;
   title: string;
   currentFocus: string;
+  links?: {
+    href: string;
+    label: string;
+  }[];
   problemStatement?: string;
   tags?: string[];
   sections?: {

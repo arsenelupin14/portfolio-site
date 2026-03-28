@@ -40,6 +40,22 @@ export function OngoingWork({ items }: { items: OngoingProject[] }) {
               </div>
             )}
 
+            {item.links && item.links.length > 0 && (
+              <div className="mb-6 flex flex-wrap gap-3">
+                {item.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-100 transition-colors duration-150 hover:border-sky-200/30 hover:bg-sky-200/[0.06]"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             {item.problemStatement && (
               <div className="mb-6 rounded-[22px] border border-sky-200/10 bg-sky-200/[0.04] p-5">
                 <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sky-100/70">

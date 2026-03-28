@@ -2,70 +2,52 @@ import type { OngoingProject } from "@/types/project";
 
 export const ongoingWork: OngoingProject[] = [
   {
-    slug: "iris-solar-data-pipeline",
-    title: "IRIS Solar UV Data Pipeline for Imaging and Spectroscopy",
+    slug: "astrolyte",
+    title: "Astrolyte",
     currentFocus:
-      "I am building a clean data-and-analysis pipeline around IRIS Level 2 observations, starting from Slit-Jaw Image time series and expanding toward synchronized spectroscopy products for event catalogs, line fitting, and solar atmosphere diagnostics.",
+      "I am building Astrolyte as the first development website in a broader astrophysical data-engineering direction, starting from real workflows for ingest, indexing, processing, validation, and serving.",
+    links: [
+      {
+        label: "Live site",
+        href: "https://astrolyte.vercel.app",
+      },
+      {
+        label: "GitHub repo",
+        href: "https://github.com/newtonraphson14/astrolyte",
+      },
+    ],
     problemStatement:
-      "IRIS data are scientifically rich but operationally easy to mishandle: FITS products are multi-extension, spectroscopy volumes grow quickly, and the project becomes messy fast unless raw files, metadata tables, and derived analysis products are separated from the start.",
+      "A lot of scientific work stops at analysis output. Astrolyte exists to push further into data engineering: preserve raw truth, structure metadata cleanly, surface processed artifacts, and keep validation visible enough that the workflow can scale into a real platform.",
     tags: [
-      "IRIS",
-      "Solar Physics",
-      "UV Spectroscopy",
-      "Slit-Jaw Imaging",
-      "Astropy",
-      "SunPy",
-      "FITS Pipelines",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Astrophysics",
+      "Data Engineering",
+      "Observational Data",
     ],
     sections: [
       {
-        title: "Scientific Focus",
+        title: "Current Build",
         paragraphs: [
-          "IRIS observes the chromosphere and transition region, which makes it a strong instrument for projects that sit at the boundary between astrophysics, scientific computing, and data-intensive workflow design.",
-          "The two main data families are Slit-Jaw Images for time-resolved UV imaging and spectrograph products for raster or sit-and-stare spectroscopy, so the pipeline has to support both image-first and spectroscopy-first analysis paths.",
+          "The current Astrolyte surface is live and built from three active workflow lineages: IRIS solar UV data, Rubin Sampling, and the T CrB project.",
+          "Those lineages are treated as the first source lanes, not the end state. The long-term direction is to use Astrolyte as a foundation that can hold many more workflows and data products over time.",
         ],
       },
       {
-        title: "Initial Project Direction",
+        title: "Engineering Direction",
         bullets: [
-          "Use Level 2 calibrated IRIS products as the default starting point rather than lower-level mission data.",
-          "Start with an SJI-first workflow because it is the most practical entry point for a clean astro-computing project.",
-          "Use one channel first, with SJI 1400 as the likely starting lane for transition-region activity.",
-          "Keep the architecture ready for a later synchronized SJI plus spectroscopy workflow once the first ingest path is stable.",
+          "Keep ingest, metadata indexing, processed outputs, and validation legible as separate stages.",
+          "Use the site as the visible surface of a real data workflow instead of a generic project gallery.",
+          "Design the structure so more astrophysical projects can be added without rethinking the whole system.",
         ],
       },
       {
-        title: "Data Products I Need to Manage",
+        title: "What Comes Next",
         bullets: [
-          "Raw IRIS Level 2 FITS files stored by OBS ID or observing date.",
-          "A metadata table per file with time range, product type, channel or line content, cadence, exposure, field of view, and pointing or WCS summary.",
-          "Optional derived cubes for image sequences, ideally stored in a format such as zarr or another large-array-friendly layout.",
-          "Optional spectroscopy sub-windows around physically important lines such as Si IV, C II, or Mg II instead of flattening the entire spectral volume too early.",
-        ],
-      },
-      {
-        title: "Planned Retrieval and Tooling",
-        bullets: [
-          "Use direct IRIS Level 2 portal access when OBS IDs or observing windows are already known.",
-          "Use SunPy Fido and the Virtual Solar Observatory when search and download automation are reliable in the execution environment.",
-          "Use Astropy for FITS, WCS, and time handling, and keep the workflow compatible with IRIS-specific tooling such as irispy.",
-          "Preserve the original FITS files as raw truth and build lightweight derived products separately for analysis and ML-friendly workflows.",
-        ],
-      },
-      {
-        title: "Planned Output Modes",
-        paragraphs: [
-          "The first likely use case is SJI-based event detection, where the inputs are short observational segments and the outputs are event catalogs, region-of-interest intensity tracks, and overlay figures.",
-          "A second expansion path is spectroscopy plus imaging, where the outputs become fitted line-parameter maps, Doppler proxies, and synchronized time evolution for selected regions.",
-        ],
-      },
-      {
-        title: "Immediate Starter Checklist",
-        bullets: [
-          "Choose one concrete use case first: SJI-only or synchronized SJI plus spectroscopy.",
-          "Download one short OBS ID as a sanity dataset rather than scaling immediately.",
-          "Verify that the pipeline can open the FITS files, plot a single frame, and extract one ROI intensity series cleanly.",
-          "Only after that, scale to a small multi-OBS archive with a reproducible metadata table and a consistent raw-to-derived file layout.",
+          "Expand Astrolyte beyond the initial three source lanes.",
+          "Polish documentation, provenance surfaces, and dataset inspection pages.",
+          "Turn the site into a durable home for future engineering-heavy astrophysics work.",
         ],
       },
     ],
