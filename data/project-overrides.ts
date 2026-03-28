@@ -7,6 +7,7 @@ type ProjectOverride = {
   stack: string[];
   featured: boolean;
   demoUrl?: string;
+  repositorySnapshot?: string;
   narrative: ProjectNarrative;
 };
 
@@ -14,8 +15,8 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   "rubin-sampling": {
     title: "Rubin Sampling: Gaia-to-ZTF Period Recovery Baseline",
     summary:
-      "A public astrophysics pipeline that links Gaia DR3 truth sets to real ZTF light curves, runs baseline period recovery on RR Lyrae, and publishes evaluation artifacts, fail-case tables, and figure bundles directly in the repository.",
-    category: "Astrophysics",
+      "A reproducible Python pipeline for ingesting public survey light curves, standardizing them into parquet-based artifacts, and evaluating period recovery against Gaia DR3 truth data. The workflow keeps ingest behavior, failure modes, and baseline results visible instead of burying them behind final figures.",
+    category: "Data Engineering",
     stack: [
       "Python",
       "Astropy",
@@ -26,20 +27,22 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       "ZTF",
     ],
     featured: true,
+    repositorySnapshot:
+      "Public baseline pipeline for live ingest, standardized time-series outputs, and evaluation under Rubin-like cadence constraints.",
     narrative: {
       challenge:
-        "Rubin-style period finding is easy to describe but hard to defend in practice once cadence irregularity, harmonics, and survey-service instability start to distort what looks like the best period candidate.",
+        "Public time-series workflows are easy to prototype and hard to trust once live providers, irregular cadence, and aliasing start to break assumptions. The core problem here was building a pipeline that could ingest unstable external data, standardize it cleanly, and expose evaluation results in a defensible way.",
       build:
-        "This repository turns that problem into a clean public workflow: Gaia truth-set download, live ZTF ingest with resumable batch behavior and provider fallback, standardized parquet outputs, baseline Lomb-Scargle search, and evaluation tables that surface both recovery metrics and manual-review failure cases.",
+        "The repository turns that problem into explicit stages: Gaia truth-set download, live ZTF ingest with provider fallback and resumable execution, schema-standardized parquet outputs, baseline Lomb-Scargle search, and evaluation tables that surface recovery, ingest status, and known alias failures.",
       outcome:
-        "The result is a portfolio-ready research repository with real data products, reproducible commands, and a first public RR Lyrae baseline batch that already shows both strong recovery performance and the first scientifically meaningful alias failures.",
+        "The result is a rerunnable baseline workflow with tracked artifacts at each stage: truth tables, ingest summaries, standardized light-curve batches, period results, evaluation tables, and figure bundles. It reads like a workflow system rather than a one-off notebook experiment.",
     },
   },
   "t-crb-project": {
     title: "T CrB Photometry and Raw-Image Pipeline",
     summary:
-      "A reproducible research pipeline for T Coronae Borealis that combines AAVSO cleaning, binning and smoothing products, ASAS-SN overlap validation, and a growing raw-image lane spanning PS1, Legacy Survey, and DASCH.",
-    category: "Astrophysics",
+      "A reproducible Python workflow for ingesting, cleaning, binning, validating, and packaging multi-source photometry plus supporting raw-image assets. The project keeps analysis products, cross-source checks, and provenance records aligned inside one explicit pipeline.",
+    category: "Workflow Systems",
     stack: [
       "Python",
       "Pandas",
@@ -49,20 +52,22 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       "Astronomy Archives",
     ],
     featured: true,
+    repositorySnapshot:
+      "Reproducible photometry and raw-image workflow with standardized outputs, overlap validation, and archive-aware provenance.",
     narrative: {
       challenge:
-        "Recurrent nova work often fragments across notebooks, raw CSVs, and archive checks, which makes it hard to keep the photometry pipeline, validation artifacts, and image-lane experiments aligned.",
+        "Historical and modern observational data tends to fragment across CSVs, notebooks, figures, and archive lookups, which makes reruns and validation hard to trust. The challenge was to keep cleaned products, overlap checks, and raw-image context connected inside a single workflow.",
       build:
-        "This repository organizes T CrB analysis into a reproducible pipeline with modern-V and cross-cycle-Vis lanes, notebook wrappers, QC exports, overlap checks against ASAS-SN, and a raw-image workflow that now includes live DASCH ingestion plus staged PS1 and Legacy assets.",
+        "I split the project into explicit lanes for modern V analysis, cross-cycle Vis context, and raw-image support. The pipeline produces cleaned parquet outputs, smoothing and binned products, ASAS-SN overlap validation, notebook wrappers, manifests, and archive-aware image staging across PS1, Legacy Survey, and DASCH.",
       outcome:
-        "The result is a portfolio-quality research repo that exposes final artifacts, methods, and provenance clearly enough to function as both an analysis workspace and a public technical showcase.",
+        "The result is a reusable data workflow with traceable outputs instead of scattered analysis files: standardized tables, exported metrics, figures, and provenance notes all live in one structure. The repository can be rerun, inspected, and extended without losing the context behind each artifact.",
     },
   },
   "ruwe-radial-ks-clustering": {
     title: "RUWE Radial KS Clustering",
     summary:
-      "A reproducible open-cluster analysis workflow that combines Monte Carlo KMeans voting, Gaia color-magnitude diagrams, RUWE inspection, and radial Kolmogorov-Smirnov testing.",
-    category: "Astrophysics",
+      "A reusable Python workflow for clustering, membership inference, quality inspection, and cross-dataset comparison on Gaia-based tables. It turns notebook-heavy analysis into a CLI-backed pipeline with clearer reruns and public workflow structure.",
+    category: "Research Software",
     stack: [
       "Python",
       "NumPy",
@@ -72,13 +77,15 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       "Jupyter",
     ],
     featured: true,
+    repositorySnapshot:
+      "CLI-backed clustering and data-quality workflow for Gaia-derived tables, with preserved notebook provenance and multi-cluster outputs.",
     narrative: {
       challenge:
-        "Cluster analysis workflows often stay trapped in notebooks, which makes reruns, comparisons, and public sharing harder than they should be.",
+        "Exploratory clustering analysis often stays trapped in notebooks, making reruns, cross-dataset comparison, and public reuse harder than they should be. The workflow problem was to make intermediate assumptions and quality checks visible without losing flexibility.",
       build:
-        "This repository cleans the original notebooks into a public research workflow with a CLI entry point, Monte Carlo membership inference, Gaia CMD views, RUWE-colored inspection, and radial KS testing.",
+        "The repository reorganizes the original analysis into explicit stages: table standardization, Monte Carlo plus KMeans voting for membership inference, CMD generation, RUWE-based quality views, and radial KS testing. A small CLI handles the main paths while archived notebooks preserve provenance.",
       outcome:
-        "The result is a reusable analysis pipeline that can compare multiple clusters in one summarized output while keeping the research steps transparent.",
+        "The result is a cleaner research software workflow that can be rerun across multiple clusters with shared commands, generated figures, and summarized outputs. It preserves transparency while reducing the fragility of manual notebook execution.",
     },
   },
 };

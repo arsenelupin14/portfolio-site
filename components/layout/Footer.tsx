@@ -12,9 +12,9 @@ export function Footer() {
               {siteIdentity.name}
             </p>
             <p className="max-w-lg text-sm leading-7 text-slate-400">
-              Curated completed projects from GitHub, ongoing work tracked
-              manually — a portfolio structure designed to keep research and
-              engineering work readable.
+              Structured data workflows, reproducible systems, and curated
+              technical work built around real datasets and visible engineering
+              decisions.
             </p>
             <p className="text-sm leading-7 text-slate-500">
               {siteIdentity.availability}

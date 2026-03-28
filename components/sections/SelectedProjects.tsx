@@ -12,9 +12,9 @@ export function SelectedProjects({
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
       <SectionTitle
-        eyebrow="Curated Work"
+        eyebrow="Validated Work"
         title="Selected Projects"
-        subtitle="Completed repositories filtered through local portfolio context, with stack notes, tighter summaries, and dedicated detail pages."
+        subtitle="Completed systems and pipelines with reusable artifacts, validation surfaces, and local copy that explains the engineering value instead of mirroring raw repository metadata."
       />
       <div className="grid gap-5 lg:grid-cols-2">
         {projects.map((project) => (

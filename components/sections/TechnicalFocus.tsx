@@ -7,7 +7,7 @@ export function TechnicalFocus({ areas }: { areas: FocusArea[] }) {
       <SectionTitle
         eyebrow="Core Areas"
         title="Technical Focus"
-        subtitle="Three domains define the structure of the portfolio and the way projects are grouped throughout the site."
+        subtitle="The portfolio is grouped around transferable engineering strengths first, with scientific datasets acting as the operating context rather than the main identity."
       />
       <div className="grid gap-4 lg:grid-cols-3">
         {areas.map((area, index) => (

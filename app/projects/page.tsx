@@ -6,7 +6,7 @@ import { getCompletedProjects } from "@/lib/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Curated completed projects across astrophysics, scientific computing, and cloud infrastructure.",
+    "Curated completed projects across data engineering, workflow systems, and research software.",
 };
 
 export default async function ProjectsPage() {
@@ -17,9 +17,9 @@ export default async function ProjectsPage() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_260px] lg:items-end">
           <SectionTitle
-            eyebrow="Archive"
+            eyebrow="Validated Work"
             title="Projects"
-            subtitle="Completed work curated from GitHub, then rewritten locally so the portfolio reflects the project itself instead of raw repository metadata."
+            subtitle="Completed systems and pipelines curated from GitHub, then rewritten locally so the site reflects workflow design, outputs, and validation instead of raw repository metadata."
           />
           <div className="panel rounded-[28px] p-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-sky-100/70">
@@ -29,7 +29,7 @@ export default async function ProjectsPage() {
               {projects.length.toString().padStart(2, "0")}
             </p>
             <p className="mt-2 text-sm leading-7 text-slate-400">
-              completed projects currently surfaced in the site.
+              completed projects currently surfaced as validated work.
             </p>
           </div>
         </div>

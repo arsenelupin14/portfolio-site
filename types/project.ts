@@ -1,9 +1,8 @@
 export type ProjectCategory =
-  | "Scientific Computing"
-  | "Data Processing"
-  | "Cloud Infrastructure"
-  | "Tools"
-  | "Astrophysics";
+  | "Data Engineering"
+  | "Workflow Systems"
+  | "Research Software"
+  | "Data Platform";
 
 export type ProjectNarrative = {
   challenge: string;

@@ -39,23 +39,25 @@ const adwaitaMono = localFont({
 export const metadata: Metadata = {
   title: {
     default:
-      "Ikbar Faiz | Astrophysics, Scientific Computing, and Cloud Infrastructure",
+      "Ikbar Faiz | Data Engineering, Workflow Systems, and Reproducible Software",
     template: "%s | Ikbar Faiz",
   },
   description:
-    "Portfolio of Ikbar Faiz, combining curated GitHub projects with ongoing research and infrastructure work across astrophysics, scientific computing, and cloud systems.",
+    "Portfolio of Ikbar Faiz, focused on reproducible data workflows, metadata-aware processing, validation-heavy systems, and workflow-oriented software built on real datasets.",
   keywords: [
     "Ikbar Faiz",
-    "astrophysics",
-    "scientific computing",
-    "cloud infrastructure",
+    "data engineering",
+    "workflow systems",
+    "reproducible pipelines",
+    "research software",
+    "scientific data systems",
     "portfolio",
   ],
   openGraph: {
     title:
-      "Ikbar Faiz | Astrophysics, Scientific Computing, and Cloud Infrastructure",
+      "Ikbar Faiz | Data Engineering, Workflow Systems, and Reproducible Software",
     description:
-      "Curated software, research, and infrastructure work across astrophysics, scientific computing, and cloud systems.",
+      "Curated workflow systems, data pipelines, and reproducible software built on real datasets.",
     type: "website",
   },
 };

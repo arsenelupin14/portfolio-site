@@ -8,9 +8,9 @@ export function GitHubHighlights({ items }: { items: GitHubHighlight[] }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <SectionTitle
-        eyebrow="Activity Layer"
+        eyebrow="Supporting Activity"
         title="GitHub Highlights"
-        subtitle="A compact view of recent repository activity. Useful as supporting evidence, but intentionally secondary to the curated project section."
+        subtitle="A compact view of recent repository activity. Useful as supporting evidence of consistency, but intentionally secondary to the curated project set."
       />
       <div className="grid gap-4 lg:grid-cols-2">
         {items.map((repo) => (
@@ -34,11 +34,6 @@ export function GitHubHighlights({ items }: { items: GitHubHighlight[] }) {
                 <p className="text-lg font-medium text-white group-hover:text-sky-100">
                   {repo.name}
                 </p>
-                {repo.description && (
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
-                    {repo.description}
-                  </p>
-                )}
               </div>
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
                 {repo.language && <span>{repo.language}</span>}

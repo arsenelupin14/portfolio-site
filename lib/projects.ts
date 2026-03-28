@@ -38,7 +38,7 @@ export const getCompletedProjects = cache(async (): Promise<
         language: repo?.language ?? null,
         stars: repo?.stargazers_count ?? 0,
         topics: repo?.topics ?? [],
-        repositorySummary: repo?.description ?? null,
+        repositorySummary: override.repositorySnapshot ?? repo?.description ?? null,
         narrative: override.narrative,
       });
 

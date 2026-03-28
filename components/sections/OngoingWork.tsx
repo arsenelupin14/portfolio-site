@@ -10,7 +10,7 @@ export function OngoingWork({ items }: { items: OngoingProject[] }) {
       <SectionTitle
         eyebrow="In Progress"
         title="Ongoing Work"
-        subtitle="Manual entries for the research and infrastructure work that is active now, without labeling it as completed just because a repository exists."
+        subtitle="Active workflow engineering, data ingestion, and platform work kept separate from completed systems so evolving directions stay visible without being overstated."
       />
       <div className="grid gap-6">
         {items.map((item) => (
@@ -59,7 +59,7 @@ export function OngoingWork({ items }: { items: OngoingProject[] }) {
             {item.problemStatement && (
               <div className="mb-6 rounded-[22px] border border-sky-200/10 bg-sky-200/[0.04] p-5">
                 <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.22em] text-sky-100/70">
-                  Core Problem
+                  Workflow Problem
                 </p>
                 <p className="text-sm leading-7 text-slate-200 sm:text-base">
                   {item.problemStatement}

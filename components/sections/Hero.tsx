@@ -31,7 +31,7 @@ export function Hero({
     <section className="relative overflow-hidden px-6 pb-20 pt-28 sm:pb-24 sm:pt-32">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.35fr)_360px] lg:items-start">
         <div>
-          <p className="eyebrow mb-5">Portfolio / Research Systems</p>
+          <p className="eyebrow mb-5">Portfolio / Data Workflow Systems</p>
           <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             {siteIdentity.headline}
           </h1>
