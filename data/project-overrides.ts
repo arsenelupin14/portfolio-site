@@ -12,6 +12,34 @@ type ProjectOverride = {
 };
 
 export const projectOverrides: Record<string, ProjectOverride> = {
+  "iris-solar-uv-data": {
+    title: "IRIS Archive Ingestion and Metadata Pipeline",
+    summary:
+      "A metadata-aware Python workflow for querying, downloading, indexing, and analyzing public IRIS observation files. The system keeps raw inputs, per-observation lineage, duplicate-obsid handling, and derived outputs coordinated inside one reproducible pipeline.",
+    category: "Data Workflows",
+    stack: [
+      "Python",
+      "Astropy",
+      "SunPy",
+      "NumPy",
+      "Pandas",
+      "PyArrow",
+      "IRIS Level 2",
+    ],
+    featured: true,
+    repositorySnapshot:
+      "Archive query, obs_dir-aware storage, metadata indexing, per-observation outputs, and merged event artifacts for IRIS Level 2 data.",
+    narrative: {
+      problem:
+        "Archive-based observation workflows become fragile once downloads, file layout, metadata, and derived outputs stop lining up. The core problem here was to make public IRIS data usable through one coherent path instead of scattering ingestion, indexing, and analysis across ad hoc scripts.",
+      workflow:
+        "The pipeline covers remote candidate discovery, observation download into obs_dir-specific storage, metadata indexing, quicklook generation, ROI time-series outputs, event-candidate export, and duplicate-window pair audits. It has been exercised on seven real observations, including repeated obsid families that needed explicit lineage handling.",
+      outputs:
+        "The repository produces a structured metadata index, per-observation summaries, quicklooks, ROI time series, event catalogs, merged event tables, and pairwise audit CSVs. Raw, metadata, derived, and report layers stay separated so the workflow remains inspectable and rerunnable.",
+      validation:
+        "Validation is built into the system rather than added later: duplicate obsid windows are tracked as distinct observation directories, audit workflows compare paired runs side by side, and the merged catalog currently records 9 event rows across 7 per-observation catalogs.",
+    },
+  },
   "rubin-sampling": {
     title: "Rubin Sampling: Gaia-to-ZTF Period Recovery Baseline",
     summary:
