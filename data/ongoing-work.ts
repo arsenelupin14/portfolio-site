@@ -53,4 +53,52 @@ export const ongoingWork: OngoingProject[] = [
     ],
     status: "Ongoing",
   },
+  {
+    slug: "hlsp-mast-metadata-pipeline",
+    title: "HLSP / MAST Metadata Pipeline",
+    currentFocus:
+      "Building a metadata-first multi-archive ingestion pipeline for HLSP collections in MAST, with observation discovery, product-manifest expansion, snapshot versioning, and stable normalized tables as the first target rather than bulk file download.",
+    links: [
+      {
+        label: "GitHub repo",
+        href: "https://github.com/newtonraphson14/hlsp-mast-metadata-pipeline",
+      },
+    ],
+    problemStatement:
+      "Programmatic access to HLSP data is strong, but production-style ingestion still needs explicit contracts around observation metadata, product manifests, rerun safety, snapshot history, and queryable downstream storage. The point of this build is to turn that workflow into a stable DE system instead of a one-off fetch script.",
+    tags: [
+      "Python",
+      "astroquery.mast",
+      "DuckDB",
+      "Parquet",
+      "Metadata Ingestion",
+      "Observational Archives",
+    ],
+    sections: [
+      {
+        title: "Current Build",
+        paragraphs: [
+          "The repo is currently structured around three core entities: collections, observations, and products, with bronze raw snapshots, silver normalized parquet, and gold latest views.",
+          "The first implementation is metadata-first by design: observation discovery comes first, then product expansion by obsid, with full asset materialization intentionally deferred.",
+        ],
+      },
+      {
+        title: "Architecture",
+        bullets: [
+          "Keep obsid and obs_id separate so product expansion and mission-facing identifiers do not get conflated.",
+          "Persist raw API payloads alongside normalized tables so schema evolution and rerun debugging stay possible.",
+          "Publish snapshot-aware history with record hashes, latest views, and run-level DQ summaries.",
+        ],
+      },
+      {
+        title: "Next",
+        bullets: [
+          "Validate starter HLSP collection filters against live MAST responses.",
+          "Run the first end-to-end ingestion pass for one collection and inspect product manifest coverage.",
+          "Add orchestration, config-driven scaling, and stronger observability around request failures and schema drift.",
+        ],
+      },
+    ],
+    status: "Ongoing",
+  },
 ];
