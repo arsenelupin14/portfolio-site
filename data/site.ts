@@ -50,8 +50,8 @@ export const siteIdentity: SiteIdentity = {
   phone: "+6282134099169",
   email: "ikbarfaiz14@gmail.com",
   resumeUrl: "/ikbar-faiz-cv.pdf",
-  github: "https://github.com/newtonraphson14",
-  githubUsername: "newtonraphson14",
+  github: "https://github.com/arsenelupin14",
+  githubUsername: "arsenelupin14",
   linkedin: "https://linkedin.com/in/ikbarfaiz",
 };
 

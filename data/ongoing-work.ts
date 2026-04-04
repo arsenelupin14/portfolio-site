@@ -13,7 +13,7 @@ export const ongoingWork: OngoingProject[] = [
       },
       {
         label: "GitHub repo",
-        href: "https://github.com/newtonraphson14/astrolyte",
+        href: "https://github.com/arsenelupin14/astrolyte",
       },
     ],
     problemStatement:
@@ -61,7 +61,7 @@ export const ongoingWork: OngoingProject[] = [
     links: [
       {
         label: "GitHub repo",
-        href: "https://github.com/newtonraphson14/hlsp-mast-metadata-pipeline",
+        href: "https://github.com/arsenelupin14/hlsp-mast-metadata-pipeline",
       },
     ],
     problemStatement:

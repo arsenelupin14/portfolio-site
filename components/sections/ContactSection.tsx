@@ -13,7 +13,7 @@ const contactItems = [
   },
   {
     label: "GitHub",
-    value: "newtonraphson14",
+    value: siteIdentity.githubUsername,
     href: siteIdentity.github,
   },
   {
