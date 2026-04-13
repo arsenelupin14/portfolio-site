@@ -74,6 +74,25 @@ const projects: Project[] = [
 
 const systems: System[] = [
   {
+    name: "For Artemis II",
+    description:
+      "Building a technical-editorial mission website that reorganizes Artemis II into one legible surface for crew, mission phases, physics context, systems, and official NASA updates.",
+    why:
+      "Public mission coverage usually fragments the story across isolated posts, visuals, and jargon-heavy explanations. This build exists to turn the Artemis II mission into a clearer information system for people who want one readable path across astronauts, vehicle stack, orbital mechanics, and mission milestones.",
+    build:
+      "The current site is live with a mission timeline from launch to splashdown, phase-based physics explainers, crew and systems sections, and a cleaner archive of NASA flight-day updates grouped by mission phase instead of raw chronology alone.",
+    architecture:
+      "Keep mission chronology, source links, explanatory physics, crew records, and systems context in separate but connected layers. Treat the site as a structured mission archive rather than a fan page so the narrative stays readable, source-backed, and expandable.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Content Systems",
+      "Editorial Web",
+      "Mission Archive",
+    ],
+    liveHref: "https://forartemisii.vercel.app",
+  },
+  {
     name: "Astrolyte",
     description:
       "Building Astrolyte as a public-facing data platform where ingest, indexing, processing, validation, and dataset surfacing are treated as explicit stages rather than hidden implementation detail.",
@@ -92,25 +111,6 @@ const systems: System[] = [
     ],
     liveHref: "https://astrolyte.vercel.app",
     repoHref: "https://github.com/arsenelupin14/astrolyte",
-  },
-  {
-    name: "For Artemis II",
-    description:
-      "Building a technical-editorial mission website that reorganizes Artemis II into one legible surface for crew, mission phases, physics context, systems, and official NASA updates.",
-    why:
-      "Public mission coverage usually fragments the story across isolated posts, visuals, and jargon-heavy explanations. This build exists to turn the Artemis II mission into a clearer information system for people who want one readable path across astronauts, vehicle stack, orbital mechanics, and mission milestones.",
-    build:
-      "The current site is live with a mission timeline from launch to splashdown, phase-based physics explainers, crew and systems sections, and a cleaner archive of NASA flight-day updates grouped by mission phase instead of raw chronology alone.",
-    architecture:
-      "Keep mission chronology, source links, explanatory physics, crew records, and systems context in separate but connected layers. Treat the site as a structured mission archive rather than a fan page so the narrative stays readable, source-backed, and expandable.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Content Systems",
-      "Editorial Web",
-      "Mission Archive",
-    ],
-    liveHref: "https://forartemisii.vercel.app",
   },
   {
     name: "HLSP / MAST Metadata Pipeline",
