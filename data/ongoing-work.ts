@@ -54,6 +54,53 @@ export const ongoingWork: OngoingProject[] = [
     status: "Ongoing",
   },
   {
+    slug: "for-artemis-ii",
+    title: "For Artemis II",
+    currentFocus:
+      "Building a technical-editorial mission website that reorganizes Artemis II into one legible surface for crew, mission phases, physics context, systems, and official NASA updates.",
+    links: [
+      {
+        label: "Live site",
+        href: "https://forartemisii.vercel.app",
+      },
+    ],
+    problemStatement:
+      "Public mission coverage is usually fragmented across standalone updates, imagery, and domain-heavy explanations. This build turns Artemis II into a clearer information system where chronology, crew context, vehicle systems, and orbital mechanics can be read together instead of as disconnected fragments.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Content Systems",
+      "Editorial Web",
+      "Mission Archive",
+    ],
+    sections: [
+      {
+        title: "Current Build",
+        paragraphs: [
+          "The live site already covers the mission arc from launch to splashdown, with mission phases, physics explanations, crew sections, systems context, and grouped NASA updates on one surface.",
+          "The current shape is less about posting standalone articles and more about building a readable archive where mission state, human roles, and source-backed milestones stay connected.",
+        ],
+      },
+      {
+        title: "Architecture",
+        bullets: [
+          "Keep mission timeline, source links, crew context, systems sections, and physics explanations as separate but connected layers.",
+          "Use official NASA updates as source anchors, then reorganize them into a cleaner phase-based narrative surface.",
+          "Treat the site as a mission record that can keep expanding without losing readability.",
+        ],
+      },
+      {
+        title: "Next",
+        bullets: [
+          "Strengthen source traceability and update cadence as new Artemis material becomes available.",
+          "Expand mission-reference depth without turning the site into a cluttered archive.",
+          "Keep the surface useful for both quick orientation and deeper technical reading.",
+        ],
+      },
+    ],
+    status: "Ongoing",
+  },
+  {
     slug: "hlsp-mast-metadata-pipeline",
     title: "HLSP / MAST Metadata Pipeline",
     currentFocus:
