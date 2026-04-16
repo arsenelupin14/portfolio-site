@@ -244,7 +244,6 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background: var(--black);
   overflow: hidden;
 }
@@ -343,8 +342,9 @@ a {
 }
 
 .hero-content {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  margin-top: auto;
+  padding-top: 24px;
+  padding-bottom: 18px;
 }
 
 .masthead {
@@ -394,6 +394,7 @@ a {
 }
 
 .hero-footer {
+  margin-top: 12px;
   padding-bottom: 40px;
 }
 
@@ -545,11 +546,16 @@ a {
 }
 
 .section.section-white .project-featured,
-.section.section-white .focus-column,
-.section.section-white .repo-card {
+.section.section-white .focus-column {
   background: var(--white);
   border-color: var(--black);
   box-shadow: 8px 8px 0 0 var(--black);
+}
+
+.section.section-white .repo-card {
+  background: var(--white);
+  border-color: var(--black);
+  box-shadow: none;
 }
 
 .section.section-white .project-badge,
@@ -615,6 +621,7 @@ a {
 }
 
 .section.section-white .repo-card:hover {
+  box-shadow: 8px 8px 0 0 var(--black);
   transform: translate(-4px, -4px);
 }
 
@@ -1042,6 +1049,7 @@ a {
     transform 0.2s ease,
     box-shadow 0.2s ease;
   background: var(--black);
+  box-shadow: none;
 }
 
 .repo-card:hover {
@@ -1334,8 +1342,8 @@ a {
   }
 
   .hero-content {
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 18px;
+    padding-bottom: 14px;
   }
 
   .masthead-text {
