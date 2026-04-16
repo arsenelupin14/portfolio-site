@@ -1,5 +1,6 @@
 "use client";
 
+import { ongoingWork } from "@/data/ongoing-work";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -10,17 +11,6 @@ type Project = {
   description: string;
   stack: string[];
   href: string;
-};
-
-type System = {
-  name: string;
-  description: string;
-  why: string;
-  build: string;
-  architecture: string;
-  tags: string[];
-  liveHref?: string;
-  repoHref?: string;
 };
 
 type RepoCard = {
@@ -69,61 +59,6 @@ const projects: Project[] = [
       "CLI-backed clustering and data-quality workflow for Gaia-derived tables, with preserved notebook provenance and multi-cluster outputs. It turns notebook-heavy analysis into a pipeline with clearer reruns and public workflow structure.",
     stack: ["Python", "NumPy", "Pandas", "scikit-learn", "Matplotlib"],
     href: "https://github.com/arsenelupin14/ruwe-radial-ks-clustering",
-  },
-];
-
-const systems: System[] = [
-  {
-    name: "For Artemis II",
-    description:
-      "Building a technical-editorial mission website that reorganizes Artemis II into one legible surface for crew, mission phases, physics context, systems, and official NASA updates.",
-    why:
-      "Public mission coverage usually fragments the story across isolated posts, visuals, and jargon-heavy explanations. This build exists to turn the Artemis II mission into a clearer information system for people who want one readable path across astronauts, vehicle stack, orbital mechanics, and mission milestones.",
-    build:
-      "The current site is live with a mission timeline from launch to splashdown, phase-based physics explainers, crew and systems sections, and a cleaner archive of NASA flight-day updates grouped by mission phase instead of raw chronology alone.",
-    architecture:
-      "Keep mission chronology, source links, explanatory physics, crew records, and systems context in separate but connected layers. Treat the site as a structured mission archive rather than a fan page so the narrative stays readable, source-backed, and expandable.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Content Systems",
-      "Editorial Web",
-      "Mission Archive",
-    ],
-    liveHref: "https://forartemisii.vercel.app",
-  },
-  {
-    name: "Astrolyte",
-    description:
-      "Building Astrolyte as a public-facing data platform where ingest, indexing, processing, validation, and dataset surfacing are treated as explicit stages rather than hidden implementation detail.",
-    why:
-      "A lot of technical work stops at final analysis output. Astrolyte exists to keep source records, metadata, processed artifacts, and validation surfaces legible enough that the workflow can grow into a real platform instead of remaining a collection of isolated repositories.",
-    build:
-      "The current surface is live and organized around three existing workflow lineages: IRIS, Rubin Sampling, and the T CrB project. Those lineages are the first source lanes, not the final shape.",
-    architecture:
-      "Keep ingest, metadata indexing, processed outputs, and validation visible as separate stages. Treat the site as the public surface of real workflow systems. Design the structure so new data lanes can be added without rethinking the whole platform.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Data Platform",
-      "Workflow Systems",
-      "Observational Data",
-    ],
-    liveHref: "https://astrolyte.vercel.app",
-    repoHref: "https://github.com/arsenelupin14/astrolyte",
-  },
-  {
-    name: "HLSP / MAST Metadata Pipeline",
-    description:
-      "Building a metadata-first multi-archive ingestion pipeline for HLSP collections in MAST, with observation discovery, product-manifest expansion, snapshot versioning, and stable normalized tables as the first target rather than bulk file download.",
-    why:
-      "Programmatic access to HLSP data is strong, but production-style ingestion still needs explicit contracts around observation metadata, product manifests, rerun safety, snapshot history, and queryable downstream storage.",
-    build:
-      "The repo is structured around three core entities: collections, observations, and products, with bronze raw snapshots, silver normalized parquet, and gold latest views. The first implementation is metadata-first by design.",
-    architecture:
-      "Keep obsid and obs_id separate. Persist raw API payloads alongside normalized tables. Publish snapshot-aware history with record hashes, latest views, and run-level DQ summaries.",
-    tags: ["Python", "astroquery.mast", "DuckDB", "Parquet", "Metadata Ingestion"],
-    repoHref: "https://github.com/arsenelupin14/hlsp-mast-metadata-pipeline",
   },
 ];
 
@@ -178,6 +113,28 @@ export default function HomePage() {
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroFooterRef = useRef<HTMLDivElement>(null);
   const sectionIds = useMemo(() => navItems.map((item) => item.id), []);
+  const systems = useMemo(
+    () =>
+      ongoingWork.map((system) => {
+        const currentBuild = system.sections?.find((section) => section.title === "Current Build");
+        const architecture = system.sections?.find((section) => section.title === "Architecture");
+
+        return {
+          name: system.title,
+          description: system.currentFocus,
+          why: system.problemStatement ?? "",
+          build: [...(currentBuild?.paragraphs ?? []), ...(currentBuild?.bullets ?? [])].join(" "),
+          architecture: [
+            ...(architecture?.paragraphs ?? []),
+            ...(architecture?.bullets ?? []),
+          ].join(" "),
+          tags: system.tags ?? [],
+          liveHref: system.links?.find((link) => /live/i.test(link.label))?.href,
+          repoHref: system.links?.find((link) => /github|repo/i.test(link.label))?.href,
+        };
+      }),
+    [],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
