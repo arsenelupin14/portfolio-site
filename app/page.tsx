@@ -581,7 +581,7 @@ export default function HomePage() {
           </div>
 
           <div className="section-footer mono">
-            <span>COUNT: 3 ACTIVE SYSTEMS</span>
+            <span>COUNT: {String(systems.length).padStart(2, "0")} ACTIVE SYSTEMS</span>
             <span>STATUS: ONGOING BUILD</span>
           </div>
         </section>
