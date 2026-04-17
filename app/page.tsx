@@ -322,14 +322,6 @@ export default function HomePage() {
             <div className="hero-overlay" ref={heroOverlayRef} />
           </div>
 
-          <div className="hero-header">
-            <div className="hero-section-label mono">IDENTIFICATION</div>
-            <div className="hero-affiliation mono">
-              <span className="accent-label mono">BINUS University</span>
-              <span>— Computer Science</span>
-            </div>
-          </div>
-
           <div className="hero-content" ref={heroContentRef}>
             <div className="masthead">
               <div className="masthead-line">
@@ -342,7 +334,10 @@ export default function HomePage() {
             <p className="hero-subtitle serif-italic">
               Data Engineer // Astrophysics Pipeline // Reproducible Systems
             </p>
-            <p className="hero-tagline mono">// Messy data in. Structured artifacts out.</p>
+            <p className="hero-tagline mono">
+              <span className="accent-label mono">BINUS University</span>
+              <span> — Computer Science</span>
+            </p>
           </div>
 
           <div className="hero-footer" ref={heroFooterRef}>
