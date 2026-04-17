@@ -108,7 +108,7 @@ export default function HomePage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const heroBgRef = useRef<HTMLDivElement>(null);
-  const heroVideoRef = useRef<HTMLIFrameElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const heroOverlayRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroFooterRef = useRef<HTMLDivElement>(null);
@@ -285,12 +285,27 @@ export default function HomePage() {
       <main>
         <section className="hero" id="hero">
           <div className="hero-bg" ref={heroBgRef}>
-            <iframe
+            <video
               ref={heroVideoRef}
               className="hero-video-bg"
-              src="https://www.youtube.com/embed/_Sl8diqCAFw?autoplay=1&mute=1&loop=1&playlist=_Sl8diqCAFw&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0"
-              title="Hero background"
-              allow="autoplay; encrypted-media"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/hero-earth-poster.jpg"
+              aria-hidden="true"
+            >
+              <source
+                src="/earth-rotation.mp4"
+                type="video/mp4"
+                media="(min-width: 769px)"
+              />
+            </video>
+            <img
+              className="hero-image-bg"
+              src="/hero-earth-poster.jpg"
+              alt="Earth from orbit"
               loading="eager"
             />
             <div className="hero-overlay" ref={heroOverlayRef} />

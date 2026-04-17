@@ -264,6 +264,20 @@ a {
   height: 120vh;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  object-fit: cover;
+  border: none;
+  display: block;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.hero-image-bg {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-overlay {
@@ -1296,6 +1310,14 @@ a {
   .hero-header {
     flex-direction: column;
     gap: 8px;
+  }
+
+  .hero-video-bg {
+    display: none;
+  }
+
+  .hero-image-bg {
+    display: block;
   }
 
   .hero-affiliation {
