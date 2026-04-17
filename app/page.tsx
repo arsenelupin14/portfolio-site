@@ -107,6 +107,7 @@ function scrollToSection(id: string) {
 export default function HomePage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [useHeroVideo, setUseHeroVideo] = useState(false);
   const heroBgRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const heroOverlayRef = useRef<HTMLDivElement>(null);
@@ -135,6 +136,18 @@ export default function HomePage() {
       }),
     [],
   );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 769px)");
+    const updateHeroMedia = () => setUseHeroVideo(mediaQuery.matches);
+
+    updateHeroMedia();
+    mediaQuery.addEventListener("change", updateHeroMedia);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateHeroMedia);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -285,29 +298,27 @@ export default function HomePage() {
       <main>
         <section className="hero" id="hero">
           <div className="hero-bg" ref={heroBgRef}>
-            <video
-              ref={heroVideoRef}
-              className="hero-video-bg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/hero-earth-poster.jpg"
-              aria-hidden="true"
-            >
-              <source
-                src="/earth-rotation.mp4"
-                type="video/mp4"
-                media="(min-width: 769px)"
-              />
-            </video>
             <img
               className="hero-image-bg"
-              src="/hero-earth-poster.jpg"
-              alt="Earth from orbit"
+              src="/artemis-earthset.jpg"
+              alt="Earthset from Artemis II"
               loading="eager"
             />
+            {useHeroVideo ? (
+              <video
+                ref={heroVideoRef}
+                className="hero-video-bg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/artemis-earthset.jpg"
+                aria-hidden="true"
+              >
+                <source src="/earth-rotation.mp4" type="video/mp4" />
+              </video>
+            ) : null}
             <div className="hero-overlay" ref={heroOverlayRef} />
           </div>
 
